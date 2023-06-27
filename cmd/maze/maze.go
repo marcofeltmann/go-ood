@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	_ "embed"
+	"fmt"
 	"html/template"
 	"io"
 	"math/rand"
@@ -31,6 +32,36 @@ type Gopher interface {
 // It takes in g Gopher that knows how to travel a maze
 // See the Gopher interface methods for more details
 func SolveMaze(g Gopher) {
+	lookRight := func(g Gopher) error {
+		g.TurnRight()
+		return g.Move()
+	}
+
+	for !g.Finished() {
+		g.TurnLeft() // -90
+		if err := g.Move(); err != nil {
+			if err := lookRight(g); err != nil {
+				// 90
+				if err := lookRight(g); err != nil {
+					// 180
+					if err := lookRight(g); err != nil {
+						// 270
+						if err := lookRight(g); err != nil {
+							// 360
+							if err := lookRight(g); err != nil {
+								panic(
+									fmt.Errorf(
+										"We did complete a whole circle. That's wrong! We're trapped! Call the Police!!! %w",
+										err,
+									),
+								)
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 // drawHTML writes the movement of the gopher through the maze to HTML
