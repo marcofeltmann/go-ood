@@ -90,7 +90,7 @@ func (m *Gopher) ApplyHealthDiff(health int) int {
 	return health
 }
 
-var allGopherSkills = []pnp.Skill{pnp.TypeSafety, pnp.Interfaces, pnp.Reflect, pnp.Generics, pnp.Boredom}
+var allGopherSkills = []pnp.Skill{pnp.TypeSafety, pnp.Interfaces, pnp.Reflect, pnp.Generics, pnp.Boredom, 23, 42}
 
 // Skills returns the minion's skills which are Banana.
 func (m Gopher) Skills() []pnp.Skill {
@@ -100,8 +100,10 @@ func (m Gopher) Skills() []pnp.Skill {
 		return allGopherSkills[:3]
 	case xp >= 11 && xp < 100:
 		return allGopherSkills[:4]
-	default:
+	case xp == 101:
 		return allGopherSkills[:5]
+	default:
+		return allGopherSkills
 	}
 }
 

@@ -643,7 +643,7 @@ Whether you choose the common structures with cmd, pkg, etc. you should probably
 9. Package path with `internal` cannot be imported. It's for code that you don't want to allow to import, not for your entire application. It's especially useful for anyone using your APIs to be able to import your models for instance.
 
 ### Code generation, why? When?
-I like this simple explanation by (Gabriele Tomassetti)[https://tomassetti.me/code-generation/]
+I like this simple explanation by [Gabriele Tomassetti](https://tomassetti.me/code-generation/)
 > The reasons to use code generation are fundamentally four:
 > - productivity;
 > - simplification;
